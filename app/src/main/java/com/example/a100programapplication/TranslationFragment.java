@@ -1,5 +1,9 @@
 package com.example.a100programapplication;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class TranslationFragment extends Fragment {
     View rootview;
@@ -28,7 +34,10 @@ public class TranslationFragment extends Fragment {
         rootview =  inflater.inflate(R.layout.fragment_translation, container, false);
 
         Button clear = rootview.findViewById(R.id.clearButton);
+        ImageButton copy1 = rootview.findViewById(R.id.imageButton);
+
         clear.setOnClickListener(new ButtonClickListener());
+        copy1.setOnClickListener(new ButtonClickListener());
 
         return rootview;
     }
@@ -37,7 +46,25 @@ public class TranslationFragment extends Fragment {
         @Override
         public void onClick(View view){
             EditText input = rootview.findViewById(R.id.inputText);
-            input.setText("");
+            TextView output = rootview.findViewById(R.id.textView);
+
+            int id = view.getId();
+            switch (id){
+                case R.id.clearButton:
+                    input.setText("");
+                    break;
+                case R.id.imageButton:
+                    String[] mimeType = new String[1];
+                    mimeType[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
+
+                    ClipData.Item item = new ClipData.Item(output.getText());
+
+                    ClipData CD = new ClipData(new ClipDescription("text", mimeType), item);
+
+                    ClipboardManager clipboard = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                    clipboard.setPrimaryClip(CD);
+                    break;
+            }
         }
     }
 }
