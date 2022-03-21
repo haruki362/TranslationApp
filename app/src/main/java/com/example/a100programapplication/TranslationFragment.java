@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class TranslationFragment extends Fragment {
     View rootview;
@@ -27,7 +28,7 @@ public class TranslationFragment extends Fragment {
         // Inflate the layout for this fragment
         rootview =  inflater.inflate(R.layout.fragment_translation, container, false);
 
-        Button clear = rootview.findViewById(R.id.clearButton);
+        ImageButton clear = rootview.findViewById(R.id.clearButton);
         clear.setOnClickListener(new ButtonClickListener());
 
         return rootview;
