@@ -35,5 +35,7 @@ public class MainActivity extends FragmentActivity {
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(name[position])
                 ).attach();
+
+
     }
 }
