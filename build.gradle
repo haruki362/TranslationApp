@@ -7,9 +7,3 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-android {
-    defaultConfig {
-        minSdk 26
-    }
-}

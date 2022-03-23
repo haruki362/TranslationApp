@@ -40,6 +40,7 @@ public class TranslationFragment extends Fragment {
     private String nameAndType1 = "";
     private String nameAndType2 = "";
     private Handler handler = new Handler();
+
     public TranslationFragment() {
     }
 
@@ -59,6 +60,10 @@ public class TranslationFragment extends Fragment {
         clear.setOnClickListener(new ButtonClickListener());
         ImageButton copy1 = rootview.findViewById(R.id.imageButton1_1);
         copy1.setOnClickListener(new ButtonClickListener());
+        ImageButton copy2 = rootview.findViewById(R.id.imageButton1_2);
+        copy2.setOnClickListener(new ButtonClickListener());
+        ImageButton copy3 = rootview.findViewById(R.id.imageButton1_3);
+        copy3.setOnClickListener(new ButtonClickListener());
         Button trans = rootview.findViewById(R.id.button);
         trans.setOnClickListener(new TransListener());
 
@@ -71,24 +76,34 @@ public class TranslationFragment extends Fragment {
         public void onClick(View view){
             EditText input = rootview.findViewById(R.id.inputText);
             TextView output = rootview.findViewById(R.id.textView);
+            TextView output1 = rootview.findViewById(R.id.textView2);
+            TextView output2 = rootview.findViewById(R.id.textView3);
 
 
             int id = view.getId();
-            switch (id){
-                case R.id.clearButton:
-                    input.setText("");
-                    break;
-                case R.id.imageButton1_1:
-                    String[] mimeType = new String[1];
-                    mimeType[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
-
-                    ClipData.Item item = new ClipData.Item(output.getText());
-
-                    ClipData CD = new ClipData(new ClipDescription("text", mimeType), item);
-
-                    ClipboardManager clipboard = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                    clipboard.setPrimaryClip(CD);
-                    break;
+            if(id == R.id.clearButton) {
+                input.setText("");
+            }else if(id ==  R.id.imageButton1_1){
+                String[] mimeType = new String[1];
+                mimeType[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
+                ClipData.Item item = new ClipData.Item(output.getText());
+                ClipData CD = new ClipData(new ClipDescription("text", mimeType), item);
+                ClipboardManager clipboard = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setPrimaryClip(CD);
+            }else if(id == R.id.imageButton1_2){
+                String[] mimeType = new String[1];
+                mimeType[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
+                ClipData.Item item = new ClipData.Item(output1.getText());
+                ClipData CD = new ClipData(new ClipDescription("text", mimeType), item);
+                ClipboardManager clipboard = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setPrimaryClip(CD);
+            }else if(id == R.id.imageButton1_3){
+                String[] mimeType = new String[1];
+                mimeType[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
+                ClipData.Item item = new ClipData.Item(output2.getText());
+                ClipData CD = new ClipData(new ClipDescription("text", mimeType), item);
+                ClipboardManager clipboard = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setPrimaryClip(CD);
             }
         }
     }
@@ -216,7 +231,7 @@ public class TranslationFragment extends Fragment {
             url = new URL(urlPostText);
             urlConnection = (HttpURLConnection) url.openConnection();
             String postData = "{" +
-                    "\"prompt\":\"日本語を丁寧語にします。" +
+                    "\"prompt\":\"日本語を尊敬語にします。" +
                     "私:私は彼に会う。　" +
                     "AI:私は彼に会います。　" +
                     "私:あなたは言う。　" +
@@ -237,7 +252,7 @@ public class TranslationFragment extends Fragment {
             urlConnection.addRequestProperty("User-Agent", "Android");
             urlConnection.addRequestProperty("Accept-Language", Locale.getDefault().toString());
             urlConnection.addRequestProperty("Content-Type", "application/json");
-            urlConnection.addRequestProperty("Authorization", "Bearer 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");
+            urlConnection.addRequestProperty("Authorization", "Bearer ");
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -280,7 +295,7 @@ public class TranslationFragment extends Fragment {
             url = new URL(urlPostText);
             urlConnection = (HttpURLConnection) url.openConnection();
             String postData = "{" +
-                    "\"prompt\":\"日本語を丁寧語にします。" +
+                    "\"prompt\":\"日本語を謙譲語にします。" +
                     "私:私は彼に会う。　" +
                     "AI:私は彼に会います。　" +
                     "私:あなたは言う。　" +
