@@ -35,8 +35,9 @@ public class TranslationFragment extends Fragment {
 
         ImageButton clear = rootview.findViewById(R.id.clearButton);
         clear.setOnClickListener(new ButtonClickListener());
-        ImageButton copy1 = rootview.findViewById(R.id.imageButton);
+        ImageButton copy1 = rootview.findViewById(R.id.imageButton1_1);
         copy1.setOnClickListener(new ButtonClickListener());
+
 
         return rootview;
     }
@@ -47,12 +48,13 @@ public class TranslationFragment extends Fragment {
             EditText input = rootview.findViewById(R.id.inputText);
             TextView output = rootview.findViewById(R.id.textView);
 
+
             int id = view.getId();
             switch (id){
                 case R.id.clearButton:
                     input.setText("");
                     break;
-                case R.id.imageButton:
+                case R.id.imageButton1_1:
                     String[] mimeType = new String[1];
                     mimeType[0] = ClipDescription.MIMETYPE_TEXT_PLAIN;
 

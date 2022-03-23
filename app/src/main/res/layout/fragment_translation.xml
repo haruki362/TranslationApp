@@ -42,7 +42,7 @@
         android:text="翻訳" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:isScrollContainer="false">
@@ -50,54 +50,105 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingTop="100dp">
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="80dp">
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="300dp"
                     android:layout_height="match_parent"
-                    android:text="TextViewaaaaabbbbbbbcccccddddddddddeeeeeeeeeeefffff" />
+                    android:text="選択1" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/imageButton1_1"
                     android:layout_width="50dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignRight="@+id/textView"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:layout_alignRight="@+id/textView"
                     android:src="?attr/actionModeCopyDrawable" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton2_1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:src="@android:drawable/btn_star" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView2"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="25dp"
-                android:text="TextView" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
 
-            <TextView
-                android:id="@+id/textView3"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:text="選択2" />
+
+                <ImageButton
+                    android:id="@+id/imageButton1_2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignRight="@+id/textView"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:src="?attr/actionModeCopyDrawable" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2_2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/btn_star" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="25dp"
-                android:text="TextView" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:text="選択3" />
+
+                <ImageButton
+                    android:id="@+id/imageButton1_3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignRight="@+id/textView"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:src="?attr/actionModeCopyDrawable" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2_3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/btn_star" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
-    </ScrollView>
 
+
+
+    </ScrollView>
 
 
 </LinearLayout>

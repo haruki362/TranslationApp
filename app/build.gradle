@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 26
 
     defaultConfig {
         applicationId "com.example.a100programapplication"
-        minSdk 30
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
