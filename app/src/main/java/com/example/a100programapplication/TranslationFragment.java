@@ -187,7 +187,7 @@ public class TranslationFragment extends Fragment {
             urlConnection.addRequestProperty("User-Agent", "Android");
             urlConnection.addRequestProperty("Accept-Language", Locale.getDefault().toString());
             urlConnection.addRequestProperty("Content-Type", "application/json");
-            urlConnection.addRequestProperty("Authorization", "Bearer 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");
+            urlConnection.addRequestProperty("Authorization", "Bearer ");
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -316,7 +316,7 @@ public class TranslationFragment extends Fragment {
             urlConnection.addRequestProperty("User-Agent", "Android");
             urlConnection.addRequestProperty("Accept-Language", Locale.getDefault().toString());
             urlConnection.addRequestProperty("Content-Type", "application/json");
-            urlConnection.addRequestProperty("Authorization", "Bearer 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");
+            urlConnection.addRequestProperty("Authorization", "Bearer");
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
