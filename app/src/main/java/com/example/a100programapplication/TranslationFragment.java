@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +18,27 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Locale;
+
 public class TranslationFragment extends Fragment {
     View rootview;
+    private String urlPostText = "https://api.openai.com/v1/engines/text-davinci-002/completions";
+    private String nameAndType = "";
+    private Handler handler = new Handler();
     public TranslationFragment() {
     }
 
@@ -37,6 +58,8 @@ public class TranslationFragment extends Fragment {
         clear.setOnClickListener(new ButtonClickListener());
         ImageButton copy1 = rootview.findViewById(R.id.imageButton);
         copy1.setOnClickListener(new ButtonClickListener());
+        Button trans = rootview.findViewById(R.id.button);
+        trans.setOnClickListener(new TransListener());
 
         return rootview;
     }
@@ -65,5 +88,101 @@ public class TranslationFragment extends Fragment {
                     break;
             }
         }
+    }
+
+    private class TransListener implements View.OnClickListener {
+        TextView temp = rootview.findViewById(R.id.textView);
+
+        @Override
+        public void onClick(View v) {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String response = "";
+                    try {
+                        response = postAPI();
+                        JSONObject rootJSON = new JSONObject(response);
+                        JSONArray formJSON = rootJSON.getJSONArray("choices");
+                        JSONObject s = formJSON.getJSONObject(0);
+                        nameAndType = s.getString("text");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            temp.setText(nameAndType);
+                        }
+                    });
+
+                }
+            });
+            thread.start();
+        }
+    }
+
+    public String postAPI() {
+        HttpURLConnection urlConnection = null;
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        String result = "";
+        String str = "";
+        URL url = null;
+        try {
+            url = new URL(urlPostText);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            String postData = "{" +
+                    "\"prompt\":\"日本語を丁寧語にします。" +
+                    "私:私は彼に会う。　" +
+                    "AI:私は彼に会います。　" +
+                    "私:あなたは言う。　" +
+                    "AI:あなたは言います。 "+
+                    "私:私は、ピクニックに行く。　" +
+                    "AI:私は、ピクニックに行きます。"+
+                    "私:あなたは明日友達と遊ぶ予定だ。" +
+                    "AI:あなたは明日友達と遊ぶ予定です。"+
+                    "私:俺はさしみを食う。　" +
+                    "AI:私はさしみを食べます。"+
+                    "私:明日はどこに何時に集まればいいんですか"+
+                    "AI:\"," +
+                    "\"max_tokens\":50,"+
+                    "\"stop\": \".\""+
+                    "}";
+            urlConnection.setConnectTimeout(10000);
+            urlConnection.setReadTimeout(10000);
+            urlConnection.addRequestProperty("User-Agent", "Android");
+            urlConnection.addRequestProperty("Accept-Language", Locale.getDefault().toString());
+            urlConnection.addRequestProperty("Content-Type", "application/json");
+            urlConnection.addRequestProperty("Authorization", "Bearer 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");
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.connect();
+            outputStream = urlConnection.getOutputStream();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "utf-8"));
+            bufferedWriter.write(postData);
+            bufferedWriter.flush();
+            bufferedWriter.close();
+
+            int statusCode = urlConnection.getResponseCode();
+            if (statusCode == 200) {
+                inputStream = urlConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                result = bufferedReader.readLine();
+                while (result != null) {
+                    str += result;
+                    result = bufferedReader.readLine();
+                }
+                bufferedReader.close();
+            }
+
+            urlConnection.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 }
