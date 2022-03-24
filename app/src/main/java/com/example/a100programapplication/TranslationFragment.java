@@ -113,6 +113,9 @@ public class TranslationFragment extends Fragment {
         TextView temp1 = rootview.findViewById(R.id.textView2);
         TextView temp2 = rootview.findViewById(R.id.textView3);
 
+        EditText input = rootview.findViewById(R.id.inputText);
+        String k = input.getText().toString();
+
         @Override
         public void onClick(View v) {
             Thread thread = new Thread(new Runnable() {
@@ -156,6 +159,8 @@ public class TranslationFragment extends Fragment {
     }
 
     public String postAPI() {
+        EditText input = rootview.findViewById(R.id.inputText);
+        String k = input.getText().toString();
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -177,7 +182,7 @@ public class TranslationFragment extends Fragment {
                     "AI:あなたは明日友達と遊ぶ予定です。"+
                     "私:俺はさしみを食う。　" +
                     "AI:私はさしみを食べます。"+
-                    "私:明日はどこに何時に集まればいいんですか"+
+                    String.format("私:%s", k)+
                     "AI:\"," +
                     "\"max_tokens\":50,"+
                     "\"stop\": \".\""+
@@ -221,6 +226,8 @@ public class TranslationFragment extends Fragment {
     }
 
     public String postAPI1() {
+        EditText input = rootview.findViewById(R.id.inputText);
+        String k = input.getText().toString();
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -232,17 +239,17 @@ public class TranslationFragment extends Fragment {
             urlConnection = (HttpURLConnection) url.openConnection();
             String postData = "{" +
                     "\"prompt\":\"日本語を尊敬語にします。" +
-                    "私:私は彼に会う。　" +
-                    "AI:私は彼に会います。　" +
+                    "私:私は上司と会う。　" +
+                    "AI:上司は私とお会いになります。　" +
                     "私:あなたは言う。　" +
-                    "AI:あなたは言います。 "+
-                    "私:私は、ピクニックに行く。　" +
-                    "AI:私は、ピクニックに行きます。"+
-                    "私:あなたは明日友達と遊ぶ予定だ。" +
-                    "AI:あなたは明日友達と遊ぶ予定です。"+
-                    "私:俺はさしみを食う。　" +
-                    "AI:私はさしみを食べます。"+
-                    "私:明日はどこに何時に集まればいいんですか"+
+                    "AI:あなたはおっしゃいました。 "+
+                    "私:先生は、ピクニックに行く。　" +
+                    "AI:先生は、ピクニックにお越しになります。"+
+                    "私:あなたは明日友達と遊ぶ予定でいる。" +
+                    "AI:あなたは明日友達と遊ぶ予定でいらっしゃいます。"+
+                    "私:お前はさしみを食う。　" +
+                    "AI:あなたはさしみを召し上がります。"+
+                    String.format("私:%s", k)+
                     "AI:\"," +
                     "\"max_tokens\":50,"+
                     "\"stop\": \".\""+
@@ -285,6 +292,8 @@ public class TranslationFragment extends Fragment {
         return str;
     }
     public String postAPI2() {
+        EditText input = rootview.findViewById(R.id.inputText);
+        String k = input.getText().toString();
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -296,17 +305,19 @@ public class TranslationFragment extends Fragment {
             urlConnection = (HttpURLConnection) url.openConnection();
             String postData = "{" +
                     "\"prompt\":\"日本語を謙譲語にします。" +
-                    "私:私は彼に会う。　" +
-                    "AI:私は彼に会います。　" +
+                    "私:私は先生の家に行く。　" +
+                    "AI:私は先生の家に伺います。　" +
                     "私:あなたは言う。　" +
-                    "AI:あなたは言います。 "+
-                    "私:私は、ピクニックに行く。　" +
-                    "AI:私は、ピクニックに行きます。"+
-                    "私:あなたは明日友達と遊ぶ予定だ。" +
-                    "AI:あなたは明日友達と遊ぶ予定です。"+
+                    "AI:あなたは申し上げます。 "+
+                    "私:私は、あなたを知っている。　" +
+                    "AI:私は、あなたを存じています。"+
+                    "私:あなたは富士山を見る。" +
+                    "AI:あなたは富士山を拝見します。"+
                     "私:俺はさしみを食う。　" +
-                    "AI:私はさしみを食べます。"+
-                    "私:明日はどこに何時に集まればいいんですか"+
+                    "AI:私はさしみをいただきます。"+
+                    "私:私はあなたに言いたいことがある。　" +
+                    "AI:私はあなたに申し上げたいことがあります。"+
+                    String.format("私:%s", k)+
                     "AI:\"," +
                     "\"max_tokens\":50,"+
                     "\"stop\": \".\""+
@@ -316,7 +327,7 @@ public class TranslationFragment extends Fragment {
             urlConnection.addRequestProperty("User-Agent", "Android");
             urlConnection.addRequestProperty("Accept-Language", Locale.getDefault().toString());
             urlConnection.addRequestProperty("Content-Type", "application/json");
-            urlConnection.addRequestProperty("Authorization", "Bearer");
+            urlConnection.addRequestProperty("Authorization", "Bearer ");
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
