@@ -16,5 +16,6 @@ https://openai.com/
 2.このプロジェクトをダウンロードまたはクローンし、AndroidStudioで開く。
 
 3.このプロジェクトに、TranslationFragment.javaがある。そのファイルの以下の写真の印の場所にAPIキーを追加する。
+![explanation1](https://user-images.githubusercontent.com/101786527/205429537-b29c732b-81b7-45a1-90b6-f971b05bfbc9.png)
 
 4.実行し、翻訳したい言葉を画面上部に入力し、翻訳ボタンを押す。
