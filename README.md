@@ -1,5 +1,5 @@
 # TranslationApp
-100programで作成した、入力された日本語を尊敬語・謙譲語・丁寧語に翻訳するAndroidアプリケーションです。
+100programで制作した、入力された日本語を尊敬語・謙譲語・丁寧語に翻訳するAndroidアプリケーションです。
 
 開発環境は、Android Studio のJavaです。
 
