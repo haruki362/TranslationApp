@@ -7,7 +7,7 @@
 
 ※起動画面に保存のタブがありますが、今後追加予定のためまだ実装していないです。
 
-このアプリの翻訳機能にはOpenAIを用いているのですが、その代わりのAIを自作・搭載したり、UIの改善等を行うことで、実用段階のものにしようと現在も開発を続けています。
+このアプリの翻訳機能にはOpenAIを用いているのですが、<br>その代わりのAIを自作・搭載したり、UIの改善等を行うことで、実用段階のものにしようと現在も開発を続けています。
 <br><br>
 利用手順
 
@@ -17,8 +17,8 @@ https://openai.com/
 
 2．このプロジェクトをダウンロードまたはクローンし、AndroidStudioで開く。
 
-3．このプロジェクトに、TranslationFragment.javaがある。そのファイルの以下の写真の印の場所に
-*Bearer APIキー*
+3．このプロジェクトに、TranslationFragment.javaがある。そのファイルの以下の写真の印の場所に<br>
+*Bearer APIキー*<br>
 を追加する。
 
 ![explanation1](https://user-images.githubusercontent.com/101786527/205429806-418ba38b-52a6-40be-a9b3-71ba50c11e1a.png)
