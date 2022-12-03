@@ -1,2 +1,12 @@
 # TranslationApp
-TranslationApp
+100programで作成した、入力された日本語を尊敬語・謙譲語・丁寧語に翻訳するAndroidアプリケーションです。
+開発環境は、Android Studio のJavaです。
+※精度としてはまだまだで、実用レベルではないです。
+このアプリの翻訳にはOpenAIのapiを用いているのですが、その代わりのAIを自作し搭載しようと開発中です。
+
+利用手順
+1．OpenAIの登録をし、apiキーを取得する。
+https://openai.com/(URL)
+2.このプロジェクトをダウンロードまたはクローンし、AndroidStudioで開く。
+3.以下の写真の印の場所にapiキーを追加する。
+4.実行し、翻訳したい言葉を画面上部に入力し、翻訳ボタンを押す。
