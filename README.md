@@ -11,7 +11,7 @@
 
 1．OpenAIの登録をし、APIキーを取得する。
 
-https://openai.com/(URL)
+https://openai.com/
 
 2.このプロジェクトをダウンロードまたはクローンし、AndroidStudioで開く。
 
