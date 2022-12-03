@@ -17,9 +17,8 @@ https://openai.com/
 
 2．このプロジェクトをダウンロードまたはクローンし、AndroidStudioで開く。
 
-3．このプロジェクトに、TranslationFragment.javaがある。そのファイルの以下の写真の印の場所に<br>
-*Bearer APIキー*<br>
-を追加する。
+3．このプロジェクトに、TranslationFragment.javaがある。<br>
+そのファイルの以下の写真の印のカーソル位置に　　　　*Bearer APIキー*　　　　を追加する。
 
 ![explanation1](https://user-images.githubusercontent.com/101786527/205429806-418ba38b-52a6-40be-a9b3-71ba50c11e1a.png)
 
