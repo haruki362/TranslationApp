@@ -26,4 +26,4 @@ https://openai.com/
 ![explanation3](https://user-images.githubusercontent.com/101786527/205429815-9ce85233-02d7-4c4b-bfb8-f49809a82714.png)
 
 
-4．実行し、翻訳したい言葉を画面上部に入力し、翻訳ボタンを押す。
+4．実行後、翻訳したい言葉を画面上部に入力し、翻訳ボタンを押す。
